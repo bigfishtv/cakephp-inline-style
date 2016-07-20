@@ -1,15 +1,10 @@
 {
     "name": "bigfishtv/cakephp-inline-style",
+    "license": "MIT",
     "require": {
         "inlinestyle/inlinestyle": "^1.2",
         "cakephp/cakephp": "^3.0"
     },
-    "authors": [
-        {
-            "name": "Adam Royle",
-            "email": "adam@bigfish.tv"
-        }
-    ],
     "autoload": {
         "classmap": [
             "src/InlineStyleHelper.php"
