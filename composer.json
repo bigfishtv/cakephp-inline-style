@@ -2,8 +2,8 @@
     "name": "bigfishtv/cakephp-inline-style",
     "license": "MIT",
     "require": {
-        "inlinestyle/inlinestyle": "^1.2",
-        "cakephp/cakephp": "^3.0"
+        "cakephp/cakephp": "^3.0",
+        "pelago/emogrifier": "^2"
     },
     "autoload": {
         "classmap": [
