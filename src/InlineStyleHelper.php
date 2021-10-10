@@ -1,5 +1,5 @@
 <?php
-namespace App\View\Helper;
+namespace Bigfishtv\View\Helper;
 
 use Cake\Event\Event;
 use Cake\View\View;
