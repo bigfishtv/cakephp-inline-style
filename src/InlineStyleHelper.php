@@ -1,12 +1,18 @@
 <?php
-
 namespace App\View\Helper;
+
+use Cake\Event\Event;
+use Cake\View\View;
+use Pelago\Emogrifier\CssInliner;
 
 class InlineStyleHelper extends \Cake\View\Helper
 {
-    public function afterLayout(\Cake\Event\Event $event)
+    public function afterLayout(Event $event)
     {
-        $content = $event->subject->Blocks->get('content');
+        /** @var View */
+        $view = $event->getSubject();
+        
+        $content = $view->fetch('content');
 
         // replace stylesheet links with style tags
         $content = preg_replace_callback('/<link (.+?)>/', function ($matches) {
@@ -28,12 +34,9 @@ class InlineStyleHelper extends \Cake\View\Helper
         $content = preg_replace('#/\*(.+?)\*/#s', '', $content);
 
         // apply inline styles to css
-        $emogrifier = new \Pelago\Emogrifier($content, $css);
-        $emogrifier->disableInvisibleNodeRemoval();
-        $emogrifier->disableStyleBlocksParsing();
-
+        $content = CssInliner::fromHtml($content)->inlineCss($css)->render();
+        
         // set new html content 
-        $content = $emogrifier->emogrify();
-        $event->subject->Blocks->set('content', $content);
+        $view->assign('content', $content);
     }
 }

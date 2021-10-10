@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "cakephp/cakephp": "^3.0",
-        "pelago/emogrifier": "^2"
+        "pelago/emogrifier": "^6.0"
     },
     "autoload": {
         "classmap": [
